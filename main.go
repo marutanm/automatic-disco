@@ -8,8 +8,10 @@ type asset struct {
 }
 
 func main() {
-	asset := new(asset)
-	asset.fileName = "this_is_file_name"
-	asset.md5 = "abcdefg"
-	fmt.Println(asset)
+	assets := []asset{
+		asset{"Images/background.jpg", "..."},
+		asset{"Images/icon.png", "..."},
+		asset{"Images/button.png", "..."},
+	}
+	fmt.Println(assets)
 }
