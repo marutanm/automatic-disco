@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 type asset struct {
 	fileName string
@@ -14,4 +17,6 @@ func main() {
 		asset{"Images/button.png", "..."},
 	}
 	fmt.Println(assets)
+	assetsB, _ := json.Marshal(assets)
+	fmt.Println(string(assetsB))
 }
