@@ -10,13 +10,18 @@ type asset struct {
 	Md5      string `json:"md5"`
 }
 
+type assets struct {
+	Contents []asset `json:"assets"`
+}
+
 func main() {
-	assets := []asset{
+	a := new(assets)
+	a.Contents = []asset{
 		asset{"Images/background.jpg", "bg"},
 		asset{"Images/icon.png", "icn"},
 		asset{"Images/button.png", "btn"},
 	}
-	fmt.Println(assets)
-	assetsB, _ := json.Marshal(assets)
-	fmt.Println(string(assetsB))
+	fmt.Println(a)
+	marshaled, _ := json.Marshal(a)
+	fmt.Println(string(marshaled))
 }
