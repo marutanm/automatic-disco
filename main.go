@@ -5,22 +5,21 @@ import (
 	"fmt"
 )
 
-type asset struct {
-	FileName string `json:"filename"`
-	Md5      string `json:"md5"`
+type assetInfo struct {
+	Md5 string `json:"md5"`
 }
 
 type assets struct {
-	Contents []asset `json:"assets"`
+	Contents map[string]assetInfo `json:"assets"`
 }
 
 func main() {
-	a := new(assets)
-	a.Contents = []asset{
-		asset{"Images/background.jpg", "bg"},
-		asset{"Images/icon.png", "icn"},
-		asset{"Images/button.png", "btn"},
+	c := map[string]assetInfo{
+		"Images/background.jpg": assetInfo{"bg"},
+		"Images/icon.png":       assetInfo{"icn"},
+		"Images/button.png":     assetInfo{"btn"},
 	}
+	a := &assets{Contents: c}
 	fmt.Println(a)
 	marshaled, _ := json.Marshal(a)
 	fmt.Println(string(marshaled))
